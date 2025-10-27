@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: vote-app
+  name: result-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: vote-app
+      app: result-app
   template:
     metadata:
       labels:
-        app: vote-app
+        app: result-app
     spec:
       containers:
-      - name: vote-app
-        image: mosesr/vote-app3
+      - name: result-app
+        image: mosesr/result-app2
         ports:
         - containerPort: 80
         env:
-        - name: REDIS_HOST
-          value: redis
+        - name: POSTGRES_HOST
+          value: postgres

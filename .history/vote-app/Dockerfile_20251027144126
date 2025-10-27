@@ -1,0 +1,18 @@
+# Use a minimal Python base image
+FROM python:3.10-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy app code
+COPY . .
+
+# Ensure app.py is executable (optional but safe)
+RUN chmod +x app.py
+
+# Use exec form to avoid shell interpretation issues
+CMD ["python3", "app.py"]

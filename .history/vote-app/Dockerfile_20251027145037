@@ -1,4 +1,4 @@
-# 🐍 Base image: secure and minimal
+# 🐍 Base image: secure, minimal, and compatible
 FROM python:3.10-slim
 
 # 📁 Set working directory
@@ -11,11 +11,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # 📂 Copy application code
 COPY . .
 
-# 🔐 Make entry script executable (only if it exists)
-RUN [ -f worker.py ] && chmod +x worker.py || echo "worker.py not found, skipping chmod"
+# 🔐 Optional: ensure main script is executable
+RUN chmod +x app.py
 
 # 🌐 Expose app port (adjust if needed)
 EXPOSE 5000
 
 # 🚀 Run the app using exec form (no shell parsing issues)
-CMD ["python3", "worker.py"]
+CMD ["python3", "app.py"]

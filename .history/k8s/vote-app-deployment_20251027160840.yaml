@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: vote-app
-        image: mosesr/vote-app3
+        image: mosesr/vote-app2
         ports:
         - containerPort: 80
         env:
